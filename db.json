@@ -19,6 +19,11 @@
       "id": "4",
       "name": "Door checker",
       "location": "living room"
+    },
+    {
+      "id": "d776",
+      "name": "Sun detector",
+      "location": "roof top"
     }
   ]
 }
