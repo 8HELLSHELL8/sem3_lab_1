@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "name": "Fire detector",
+      "id": "1",
+      "location": "kitchen"
+    },
+    {
+      "id": "2",
+      "name": "Camera",
+      "location": "Balcony"
+    },
+    {
+      "id": "3",
+      "name": "Leak detector",
+      "location": "toilet"
+    },
+    {
+      "id": "4",
+      "name": "Door checker",
+      "location": "living room"
+    }
+  ]
+}
