@@ -1,0 +1,38 @@
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Занимает всю высоту экрана */
+    text-align: center;
+    background-color: #f8f9fa; /* Светлый фон */
+    font-family: Arial, sans-serif;
+}
+
+.not-found-title {
+    font-size: 64px;
+    color: #dc3545; /* Красный цвет для акцента */
+    margin-bottom: 20px;
+}
+
+.not-found-message {
+    font-size: 24px;
+    color: #555; /* Серый текст */
+    margin-bottom: 30px;
+}
+
+.not-found-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff; /* Синий цвет кнопки */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.not-found-button:hover {
+    background-color: #0056b3; /* Темно-синий цвет при наведении */
+}
