@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import '../css/Home.css'
+import "../css/Home.css";
 
 const Home = () => {
-
-
-    // Init state
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
-        const loadData = async() => {
+        const loadData = async () => {
             try {
-
-                await new Promise((resolve) => setTimeout(resolve, 1000)); // Spinner
+                await new Promise((resolve) => setTimeout(resolve, 1000));
 
                 const response = await axios.get("http://localhost:5000/items");
-                setData(response.data); // Updatim state
-                setLoading(false)
-                console.log("Data loaded successfully ", response.data);
+                setData(response.data);
+                setLoading(false);
             } catch (error) {
-                console.error("Error in query: ", error);
+                if (error.response) {
+                    setError(error.response.data.message || "An error occurred while loading data.");
+                } else if (error.request) {
+                    setError("No response from the server. Please try again later.");
+                } else {
+                    setError("An unexpected error occurred.");
+                }
                 setLoading(false);
             }
         };
 
         loadData();
     }, []);
-
 
     return (
         <div className="home-container">
@@ -38,6 +39,10 @@ const Home = () => {
                 <div className="spinner-container">
                     <div className="spinner"></div>
                     <p className="loading-text">Loading...</p>
+                </div>
+            ) : error ? (
+                <div className="error-container">
+                    <p className="error-message">{error}</p>
                 </div>
             ) : (
                 <>
@@ -61,6 +66,5 @@ const Home = () => {
         </div>
     );
 };
-
 
 export default Home;

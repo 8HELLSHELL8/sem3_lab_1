@@ -21,7 +21,9 @@
       "location": "living room"
     },
     {
-      "id": "d776"
+      "id": "c190",
+      "name": "rain detector",
+      "location": "roof"
     }
   ]
 }
