@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import '../css/Home.css'
 
 const Home = () => {
 
@@ -27,16 +28,30 @@ const Home = () => {
 
 
     return (
-        <div>
-            <h1>Device list</h1>
-            <ul>
-                {data.map(item => (
-                    <li key={item.id}>
-                        <Link to={`/detail/${item.id}`}> {item.name} </Link>
-                    </li>
-                ))}
-            </ul>
-            <Link to="/add">Add device</Link>
+        <div className="home-container">
+            <h1 className="home-title">Device List</h1>
+
+            {loading ? (
+                <p className="home-loading">Loading...</p>
+            ) : (
+                <>
+                    <ul className="device-list">
+                        {data.map((item) => (
+                            <li key={item.id} className="device-item">
+                                <Link to={`/detail/${item.id}`} className="device-link">
+                                    {item.name}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <div className="home-actions">
+                        <Link to="/add" className="add-device-button">
+                            Add Device
+                        </Link>
+                    </div>
+                </>
+            )}
         </div>
     );
 };

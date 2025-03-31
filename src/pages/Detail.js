@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-
+import '../css/Detail.css'
 
 
 const Detail = () => {
@@ -51,72 +51,77 @@ const Detail = () => {
     }
 
     return (
-        <div>
-          <h1>Device detailed info</h1>
-          <div>
-            <label>
-              Device name:{" "}
-              <strong>{name}</strong>
-            </label>
-            <br />
-            <label>
-              Location:{" "}
-              <strong>{location}</strong>
-            </label>
+      <div className="detail-container">
+          <h1 className="detail-title">Device Detailed Info</h1>
+          <div className="detail-info">
+              <label className="detail-label">
+                  Device Name: <strong>{name}</strong>
+              </label>
+              <br />
+              <label className="detail-label">
+                  Location: <strong>{location}</strong>
+              </label>
           </div>
-    
-          <div style={{ marginTop: "20px" }}>
-            <button onClick={() => navigate("/")}>Back</button>
-            <button onClick={handleDelete} style={{ marginLeft: "10px" }}>
-              Delete device
-            </button>
-            <button onClick={() => setIsEditing(true)} style={{ marginLeft: "10px" }}>
-              Edit
-            </button>
+
+          <div className="detail-actions">
+              <button className="detail-button" onClick={() => navigate("/")}>
+                  Back
+              </button>
+              <button className="detail-button danger" onClick={handleDelete}>
+                  Delete Device
+              </button>
+              <button className="detail-button edit" onClick={() => setIsEditing(true)}>
+                  Edit
+              </button>
           </div>
-    
+
           {isEditing && (
-            <div style={{ marginTop: "20px" }}>
-              <h3>Edit info</h3>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  handleSave();
-                }}
-              >
-                <label>
-                  New name:
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                  />
-                </label>
-                <br />
-                <label>
-                  New location:
-                  <input
-                    type="text"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    required
-                  />
-                </label>
-                <br />
-                <button type="submit">Save changes</button>
-                <button
-                  type="button"
-                  onClick={() => setIsEditing(false)}
-                  style={{ marginLeft: "10px" }}
-                >
-                  Cancel
-                </button>
-              </form>
-            </div>
+              <div className="edit-form">
+                  <h3 className="edit-title">Edit Info</h3>
+                  <form
+                      onSubmit={(e) => {
+                          e.preventDefault();
+                          handleSave();
+                      }}
+                      className="edit-form-container"
+                  >
+                      <label className="edit-label">
+                          New Name:
+                          <input
+                              type="text"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              required
+                              className="edit-input"
+                          />
+                      </label>
+                      <br />
+                      <label className="edit-label">
+                          New Location:
+                          <input
+                              type="text"
+                              value={location}
+                              onChange={(e) => setLocation(e.target.value)}
+                              required
+                              className="edit-input"
+                          />
+                      </label>
+                      <br />
+                      <button type="submit" className="edit-button save">
+                          Save Changes
+                      </button>
+                      <button
+                          type="button"
+                          onClick={() => setIsEditing(false)}
+                          className="edit-button cancel"
+                      >
+                          Cancel
+                      </button>
+                  </form>
+              </div>
           )}
-        </div>
-      );
+      </div>
+  );
 };
 
 export default Detail;

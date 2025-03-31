@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../css/Form.css'
 
 const Form = () => {
 
@@ -32,31 +33,40 @@ const Form = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Device name:
-                <input type="text"
-                    value={name}
-                    onChange={handleNameChange}
-                    required
-                />
-            </label>
-            <br/>
-        
-            <label>
-                Location:
-                <input
-                    type="text"
-                    value={location}
-                    onChange={handleLocationChange}
-                    required
-                />
-            </label>
-            <br/>
+        <div className="form-container">
+            <h2 className="form-title">Add New Device</h2>
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form-group">
+                    <label className="form-label">
+                        Device Name:
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={handleNameChange}
+                            required
+                            className="form-input"
+                        />
+                    </label>
+                </div>
 
-            <button type="submit">Save data</button>
-        </form>
+                <div className="form-group">
+                    <label className="form-label">
+                        Location:
+                        <input
+                            type="text"
+                            value={location}
+                            onChange={handleLocationChange}
+                            required
+                            className="form-input"
+                        />
+                    </label>
+                </div>
 
+                <button type="submit" className="form-button">
+                    Save Data
+                </button>
+            </form>
+        </div>
     );  
 };
 export default Form;
