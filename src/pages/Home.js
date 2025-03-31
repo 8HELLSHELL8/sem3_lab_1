@@ -13,6 +13,9 @@ const Home = () => {
     useEffect(() => {
         const loadData = async() => {
             try {
+
+                await new Promise((resolve) => setTimeout(resolve, 1000)); // Spinner
+
                 const response = await axios.get("http://localhost:5000/items");
                 setData(response.data); // Updatim state
                 setLoading(false)
@@ -32,7 +35,10 @@ const Home = () => {
             <h1 className="home-title">Device List</h1>
 
             {loading ? (
-                <p className="home-loading">Loading...</p>
+                <div className="spinner-container">
+                    <div className="spinner"></div>
+                    <p className="loading-text">Loading...</p>
+                </div>
             ) : (
                 <>
                     <ul className="device-list">
